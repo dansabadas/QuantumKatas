@@ -230,5 +230,4 @@ namespace Quantum.Kata.BasicGates {
     operation T25_FredkinGate_Test () : Unit {
         AssertOperationsEqualReferenced(FredkinGate, FredkinGate_Reference, 3);
     }
-    
 }

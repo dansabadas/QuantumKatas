@@ -7,20 +7,20 @@
 // The tasks themselves can be found in Tasks.qs file.
 //////////////////////////////////////////////////////////////////////
 
-using Microsoft.Quantum.Simulation.XUnit;
-using Microsoft.Quantum.Simulation.Simulators;
-using Xunit.Abstractions;
 using System.Diagnostics;
+using Microsoft.Quantum.Simulation.Simulators;
+using Microsoft.Quantum.Simulation.XUnit;
+using Xunit.Abstractions;
 
 namespace Quantum.Kata.BasicGates
 {
     public class TestSuiteRunner
     {
-        private readonly ITestOutputHelper output;
+        private readonly ITestOutputHelper _output;
 
         public TestSuiteRunner(ITestOutputHelper output)
         {
-            this.output = output;
+            _output = output;
         }
 
         /// <summary>
@@ -33,8 +33,8 @@ namespace Quantum.Kata.BasicGates
             using (var sim = new QuantumSimulator())
             {
                 // OnLog defines action(s) performed when Q# test calls function Message
-                sim.OnLog += (msg) => { output.WriteLine(msg); };
-                sim.OnLog += (msg) => { Debug.WriteLine(msg); };
+                sim.OnLog += msg => { _output.WriteLine(msg); };
+                sim.OnLog += msg => { Debug.WriteLine(msg); };
                 op.TestOperationRunner(sim);
             }
         }
